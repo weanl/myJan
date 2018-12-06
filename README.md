@@ -17,7 +17,8 @@
 
 &emsp;&emsp;this fold is mainly for `Multi-Step Forecasting`. Firstly, we show the target time series as following.
 
-<img src="http://chart.googleapis.com/chart?cht=tx&chl= $$HealthScore = [x_1, x_2,..., x_N]$$" style="border:none;"> where <img src="http://chart.googleapis.com/chart?cht=tx&chl= $x_t \in [0, 100]$" style="border:none;">
+<img src="http://chart.googleapis.com/chart?cht=tx&chl= $$ HealthScore = [x_1, x_2,..., x_N], where x_t \in [0, 100]$$" style="border:none;">
+
 
 ## 2. analyst/
 
