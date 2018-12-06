@@ -6,7 +6,7 @@
 **keys words:**
   - Operation for Data Base System
   - Multi-Step Forecasting
-  - Condition & KPIs Analysis
+  - Pattern & Rule Analysis (along with KPIs)
 
 **Details:**
 
@@ -22,13 +22,19 @@
 
 ## 2. analyst/
 
+&emsp;&emsp;this fold is mainly for `Pattern & KPIs Analysis`. <u>Actually, the Pattern in one segmentation correspond with the System Condition.</u>
+
+#### 2.1 Segmentation & Pattern
 
 
+#### 2.2 Importance Analysis (simple idea)
 
+#### 2.3 Rule Analysis (advanced idea)
+&emsp;&emsp;To find how various KPIs affect the System Condition, we define the problem as `Rule Learning` which can mine the rules as following.
 
+<img src="http://chart.googleapis.com/chart?cht=tx&chl= $$  Sn_i \and ... \and Sm_j -> S_k $$" style="border:none;">
 
-
-
+n-th KPI's i-th Pattern and ... and m-th KPI's j-th Pattern might cause the System's k-th Pattern.
 
 ---
 #### END OF FILE
