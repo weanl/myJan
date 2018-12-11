@@ -17,10 +17,10 @@ np.savez_compressed(SavePath,
 ```
 visualization:
 
-![avatar](data/TSA_score_slct_cluster.png)
+![avatar](../data/TSA_score_slct_cluster.png)
 
 visualization:
-![avatar](data/TSA_score_slct_cluster_specific.png)
+![avatar](../data/TSA_score_slct_cluster_specific.png)
 
 &emsp;&emsp;**58 KPIs:**
 
