@@ -120,7 +120,7 @@ y_new = func(t_new)
 #### 2.3 Rule Analysis (advanced idea)
 &emsp;&emsp;To find how various KPIs affect the System Condition, we define the problem as `Rule Learning` which can mine the rules as following.
 
-<img src="http://chart.googleapis.com/chart?cht=tx&chl= $$  Sn_i \vee ... \vee Sm_j -> S_k $$" style="border:none;">
+<img src="http://chart.googleapis.com/chart?cht=tx&chl= $$  Sn_i {\vee} ... {\vee} Sm_j -> S_k $$" style="border:none;">
 
 n-th KPI's i-th Pattern and ... and m-th KPI's j-th Pattern might cause the System's k-th Pattern.
 
