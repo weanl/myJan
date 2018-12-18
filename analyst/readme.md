@@ -19,7 +19,7 @@ visualization: `ShowClusterResults()` in `TSA_v1.py`
 
 ![avatar](../data/TSA_score_slct_cluster.png)
 
-visualization: `ShowClusterResults()` in `TSA_v1.py`
+visualization: `ShowClusterResults()` in `TSA_v1.py`. (NOTES: Better visualization need align the y-axis.)
 ![avatar](../data/TSA_score_slct_cluster_specific.png)
 &emsp;&emsp;**Discussion:** we have to explain the certain `Pattern` behind each kind of `Cluster`. Here, I have some ideas.
   - `C9=1: red square` and `C10=2: black square` are added patterns because of `interpolation & alignment` in `sec 0.2`.
@@ -27,9 +27,13 @@ visualization: `ShowClusterResults()` in `TSA_v1.py`
   - `C0=423: blue dot`, `C1=254: green dot`, `C2=2: red dot`, `C4=2: indigo dot`, `C8=3: green square`, `C12=1: indigo square`, `C13=1: yellow square` are fluctuating between **85** and **95**
   - `C5=1: purple dot`, `C15=1: green triangle`, `C17=1: black triangle` witness sharp drop from **90+** to **0**. (Actually, the black triangle one is shown in the first figure)
 
+&emsp;&emsp;**align the ylim:**
+ ![avatar](../data/TSA_score_slct_cluster_specific_v2.png)
+
 #### 2.2 Segmentation & Correlation (Similarity)
 
 (NOTES: Currently, we adopt `DTW` as `temporal similarity measurement` because of its optimal performance.)
+
 
 (NOTES: fill `nan` with 0)
 
@@ -44,10 +48,19 @@ np.savez_compressed(SavePath, corKPIs_slct=corKPIs_slct, times_slct=times_slct)
 ![avatar](../data/TSA_corKPIs_slct_specific.png)
 
 we better zoom it and draw another one.
+&emsp;&emsp;**210100062:**
+![avatar](../data/BuildData_v2_corKPIs_slct_210100062.png)
+&emsp;&emsp;**210100063:**
+![avatar](../data/BuildData_v2_corKPIs_slct_210100063.png)
+&emsp;&emsp;**210100139:**
+![avatar](../data/BuildData_v2_corKPIs_slct_210100139.png)
 
+#### 2.1 Segmentation & Pattern _v2
+(NOTES: However, the current results are not good in that: Firstly, some KPIs are import all the time, and )
 
+&emsp;&emsp;**for the first problem** We switch `DTW` to other similarity measurement. (pearson correlation) (euclid distance, ..., normalization should be done first) (cosine similarity, in normal hyper-ball)
 
-
+&emsp;&emsp;**for another problem** We would better process all the DBID. `BuildData_v2.py`
 
 
 

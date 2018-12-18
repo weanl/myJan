@@ -41,7 +41,7 @@ Firstly, we show the target time series as following.
 '2189147', '2189159', '2189999', '2190054', '3000003', '3000005',
 '3000006', '3000007', '3000008', '3000200']
 ```
-&emsp;&emsp;According to the file `os` sheetlet in `采集id.xlsx`, we figure out that,
+&emsp;&emsp;{ According to the file `os` sheetlet in `采集id.xlsx`, we figure out that
   - `3000003`, `failed_ping`, `带内带外能ping通，账号密码也对就是连接不上`
   - `3000005`, `Mem_used`, `内存使用率`
   - `3000006`, `fss_used`, `文件系统使用率`
@@ -49,6 +49,19 @@ Firstly, we show the target time series as following.
   - `3000008`, `MemFree`, `物理内存剩余量`
   - `3000200`, `RX_ERR_DRP`, `总报错率`
 
+&emsp;&emsp;} <u>It is very different here.</u>
+
+&emsp;&emsp;The whole information of KPIs meanings can be found in [`data/data-1544602176927.csv`](data/data-1544602176927.csv). Actually, there are totally **276 different kinds of KPIs**.
+  - `...`
+  - `3000003`, `CPU used`, `CPU使用率`
+  - `3000004`, `Mem used`, `内存使用率`
+  - `3000005`, `root fss usage`, `根目录文件系统使用率`
+  - `3000006`, `IO Latency`, `Io读写延时 RXawaite`
+  - `3000007`, `Mem Free (kb)`, `物理内存剩余量(kb)`
+  - `3000008`, `Ioawait`, `WIO占CPU百分比`
+  - `...`
+
+&emsp;&emsp;We call KPIs as `KPIs-1`, `KPIs-2`, ... , `KPIs-276` while a data set of one certain DBID doesn't have all 276 KPIs. `fetchKPIs276` in `BuildData.py`
 
 
 #### 0.2 interpolation & alignment
