@@ -62,7 +62,8 @@ we better zoom it and draw another one.
 
 &emsp;&emsp;**for another problem** We would better process all the DBID. `BuildData_v2.py`
 
-
+![avatar](../data/gendata.png)
+![avatar](../data/genCorData.png)
 
 
 
