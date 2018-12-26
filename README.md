@@ -2,13 +2,16 @@
 # myJan Overview
 
 @wanchen from **Sep. 2018** to **Jan. 2019**
+<br>work with ...</br>
 
 **keys words:**
   - Operation for Data Base System
   - Multi-Step Forecasting
-  - Pattern & Rule Analysis (along with KPIs)
+  - Correlation & (Pattern) Analysis (along with KPIs)
 
 **Details:**
+
+&emsp;&emsp;(NOTE: better given a framework of our model)
 
 
 <img src="http://chart.googleapis.com/chart?cht=tx&chl= $$**********$$" style="border:none;">
@@ -23,9 +26,11 @@ Firstly, we show the target time series as following.
 <img src="http://chart.googleapis.com/chart?cht=tx&chl= $$ HealthScore = [x_1, x_2,..., x_N]$$" style="border:none;">    <img src="http://chart.googleapis.com/chart?cht=tx&chl= $ x_t \in [0, 100] $" style="border:none;">
 
 &emsp;&emsp;**0.1.1 score** (2018-09-29 to 2018-11-24) `AlignBuild` and `ShowData` in `BuildData.py`.
+
 ![avatar](data/ShowData_210100063.png)
 
 &emsp;&emsp;**0.1.2 58 KPIs** `ShowFigs` in `BuildData.py`.
+
 ![avatar](data/ShowData_210100063_KPIs.png)
 
 &emsp;&emsp;Here, we try to find meanings behind the <u>58 KPIs</u>.
@@ -82,6 +87,12 @@ func = interp1d(t_raw, y_raw, kind)
 y_new = func(t_new)
 
 ```
+**NOTES:**
+  - the format of one iterm is `timestamp + score + KPIs`, so we can check the discontinuity of timestamp.
+  - **Firstly,** we delete the item whose score is **0.0** representing that the system cannot be reached and the KPIs are **NULL** at the same time.
+  - **Secondly,** (move the timestamp like `2017-11-27T12:15:06` to `2017-11-27T12:15:00`) Acutually, we can ignore that.
+  - **Thirdly,** if the time-nearby pairwise `t2-t1>(3+1)minutes`, we choose to set a seperator here which means they are seperated into different subsequences.
+
 
 &emsp;&emsp;**0.2.1 score** `AlignBuild_v2` and `ShowData_v2` in `BuildData.py`.
 
