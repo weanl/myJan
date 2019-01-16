@@ -4,14 +4,13 @@
 @wanchen from **Sep. 2018** to **Jan. 2019**
 <br>work with ...</br>
 
-**keys words:**
-  - Operation for Data Base System
-  - Multi-Step Forecasting
-  - Correlation & (Pattern) Analysis (along with KPIs)
+**aims:**
+  - forecast system health score in multi steps
+  - predict main factors over forecasting horizon
 
 **Details:**
 
-&emsp;&emsp;(NOTE: better given a framework of our model)
+&emsp;&emsp;(**NOTE**: given a framework of our model)
 
 
 <img src="http://chart.googleapis.com/chart?cht=tx&chl= $$**********$$" style="border:none;">
@@ -29,7 +28,10 @@ Firstly, we show the target time series as following.
 
 ![avatar](data/ShowData_210100063.png)
 
-&emsp;&emsp;**0.1.2 58 KPIs** `ShowFigs` in `BuildData.py`.
+&emsp;&emsp;**0.1.2 score distribution**
+![avatar](given_data_1128/210100063/showScoreDis.png)
+
+&emsp;&emsp;**0.1.3 58 KPIs** `ShowFigs` in `BuildData.py`.
 
 ![avatar](data/ShowData_210100063_KPIs.png)
 
@@ -46,16 +48,6 @@ Firstly, we show the target time series as following.
 '2189147', '2189159', '2189999', '2190054', '3000003', '3000005',
 '3000006', '3000007', '3000008', '3000200']
 ```
-&emsp;&emsp;{ According to the file `os` sheetlet in `采集id.xlsx`, we figure out that
-  - `3000003`, `failed_ping`, `带内带外能ping通，账号密码也对就是连接不上`
-  - `3000005`, `Mem_used`, `内存使用率`
-  - `3000006`, `fss_used`, `文件系统使用率`
-  - `3000007`, `RXawait`, `Io读写延时`
-  - `3000008`, `MemFree`, `物理内存剩余量`
-  - `3000200`, `RX_ERR_DRP`, `总报错率`
-
-&emsp;&emsp;} <u>It is very different here.</u>
-
 &emsp;&emsp;The whole information of KPIs meanings can be found in [`data/data-1544602176927.csv`](data/data-1544602176927.csv). Actually, there are totally **276 different kinds of KPIs**.
   - `...`
   - `3000003`, `CPU used`, `CPU使用率`
@@ -65,10 +57,10 @@ Firstly, we show the target time series as following.
   - `3000007`, `Mem Free (kb)`, `物理内存剩余量(kb)`
   - `3000008`, `Ioawait`, `WIO占CPU百分比`
   - `...`
-
+  -
 &emsp;&emsp;We call KPIs as `KPIs-1`, `KPIs-2`, ... , `KPIs-276` while a data set of one certain DBID doesn't have all 276 KPIs. `fetchKPIs276` in `BuildData.py`
 
-
+<div style='display: none'>
 #### 0.2 interpolation & alignment
 
 &emsp;&emsp;As expected, `scores` and `KPIs` are sampled every 3 minutes while some `shifts` and `missing values` occur sometime. We call it `interpolation & alignment task`, which `deal with the discontinuity`.
@@ -93,7 +85,6 @@ y_new = func(t_new)
   - **Secondly,** (move the timestamp like `2017-11-27T12:15:06` to `2017-11-27T12:15:00`) Acutually, we can ignore that.
   - **Thirdly,** if the time-nearby pairwise `t2-t1>(3+1)minutes`, we choose to set a seperator here which means they are seperated into different subsequences.
 
-
 &emsp;&emsp;**0.2.1 score** `AlignBuild_v2` and `ShowData_v2` in `BuildData.py`.
 
 ![avatar](data/ShowData_210100063_score_interp.png)
@@ -106,23 +97,28 @@ y_new = func(t_new)
   - fetch raw data from `data/210100063/all.csv`
   - `interpolation & alignment` on `score` and `58 KPIs`
   - results are saved as <u>`data/210100063/all_interp.csv`</u> (we save data as `np.float32` and it makes file bigger)
-
+</div>
 
 
 ## 1. forecaster/
 
 &emsp;&emsp;this fold is mainly for `Multi-Step Forecasting`.
 
-#### 1.1 related works
+#### 1.1
+<br>**x-axis: forecasting horizon, 10 steps**
+<br>**y-axis: corresponding RMSE**
+<br>**curves: different methods,** baseline includes `AR`, `ARIMA`, ... , `DeepSeqMO`, `our method`
 
+![avatar](given_data_1128/210100063/show_score_forecast.png)
 
+  - `our method` -> [`given_data_1128/210100063/score_forecast.npz`](`given_data_1128/210100063/score_forecast.npz`) (data from genCorData.pickle, the following method will train on SimpleScoreData.npz)
+  - `AR`
+  - `ARIMA`
+  - `DeepMO` ...
 
-
-#### 1.3 motivation
-(**`seq2seq` Multi-step & Pattern in segmentation**)
-
-(**time-frequency analysis & `wavelet` dec-rec**)
-
+#### 1.2 RMSE Distribution
+<br>**x-axis:**
+<br>**y-axis:**
 
 ## 2. analyst/
 
